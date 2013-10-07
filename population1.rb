@@ -10,8 +10,14 @@ It should be able to find which zip code is the smallest or largest, return how 
 require "csv"
 
 # get headings
-headings = []
-class Array
+
+class CsvArray < Array
+    # STUCK HERE
+    def initialize(filename)
+        a = Csv.read(filename)
+        a
+    end
+
     def headings
         # gets headings from array of arrays
         # assumes 2-dimensional array
@@ -25,13 +31,12 @@ class Array
     end
 end
 
+#db = CSV.read("test-database.csv")
 
-#zips = []
-
-db = CSV.read("test-database.csv")
+db = CsvArray.new("test-database.csv")
 p db
-p db.headings
-p db.contents
+#p db.headings
+#p db.contents
 #db.shift # remove first row
 #p headings
 #p db

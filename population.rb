@@ -17,8 +17,7 @@ class CSVReader
         @headers = header_str.split(',')
         @headers.map! do |h|
             # remove quotes
-            p h
-            h.gsub('"', '')
+            h.gsub!('"', '')
             # remove newline
             h.strip!
             # convert to symbol - WHY?
@@ -49,10 +48,10 @@ class String
 end
 
 
-peeps = CSVReader.new("text-database.csv")
+peeps = CSVReader.new("test-database.csv")
 #p peeps
 #peeps.headers = peeps.headers=('"Name","Age","Gender"') ## Why doesn't this work?
-peeps.headers = peeps.headers=("Name,Age,Gender")
+peeps.headers = '"Name","Age","Gender"'
 
 #p peeps.fname
 #p peeps.headers
